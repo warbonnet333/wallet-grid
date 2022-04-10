@@ -1,0 +1,288 @@
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 12px;
+}
+
+h1 {
+  font-size: 2.25rem;
+  color: #2b6cb0;
+  text-align: center;
+  margin-bottom: 32px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.sidebar {
+  padding: 0.5rem 1em 1.25em;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &_wrap {
+    border-top: 1px solid #E2E8F0;
+    border-bottom: 1px solid #E2E8F0;
+  }
+
+  &_toggle {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.opened {
+      svg {
+        transform: rotate(180deg);
+      }
+
+      & ~ .sidebar {
+        opacity: 1;
+      }
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: all 0.3s ease;
+    }
+  }
+
+  &_title {
+    padding: 0 12px;
+    color: #718096;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  &_list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 32px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &-item {
+      margin-top: 8px;
+      padding: 8px 12px;
+      font-size: 0.875rem;
+
+      a {
+        color: black;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-flow: row wrap;
+  grid-gap: 1.5rem;
+  margin-top: 15px;
+
+  &_item {
+    width: 100%;
+    height: 179px;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &-img {
+      &_back {
+        position: absolute;
+        z-index: -1;
+        width: 150%;
+        height: 150%;
+        object-fit: cover;
+        filter: blur(30px);
+        display: flex;
+        opacity: 0.4;
+        align-items: center;
+      }
+
+      &_front {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 24px;
+        overflow: hidden;
+        border-radius: 50%;
+      }
+    }
+
+    &-title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    &-descr {
+      font-size: 12px;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.top {
+  .search {
+    display: none;
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+  position: relative;
+
+  &_icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 1em;
+      height: 1em;
+      object-fit: contain;
+      display: block;
+    }
+  }
+
+  input {
+    padding: 0 16px 0 3em;
+    width: 100%;
+    appearance: none;
+    border-radius: 0.375rem;
+    border: 1px solid #E2E8F0;
+    background: #ffffff;
+    min-height: 2.5rem;
+    font-size: 1em;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: #718096;
+    }
+
+    &:focus {
+      border-color: #2b6cb0;
+    }
+  }
+}
+
+@media screen and (min-width: 30em) {
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (min-width: 725px) {
+  .container {
+    max-width: 725px;
+  }
+
+  .wrap {
+    display: flex;
+    max-width: 725px;
+    margin: 0 auto;
+  }
+
+  .sidebar {
+    display: block !important;
+    opacity: 1;
+    padding: 0;
+
+    .search {
+      display: none;
+    }
+
+    &_toggle {
+      display: none;
+    }
+
+    &_wrap {
+      min-width: 200px;
+      margin-right: 1.5rem;
+      border: none;
+    }
+
+    &_list {
+
+      &-item {
+        margin-top: 0.5rem;
+        border-radius: 0.375rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #EDF2F7;
+          color: black;
+        }
+      }
+    }
+  }
+
+  .list {
+    margin-top: 0;
+
+    &_wrap {
+      width: 100%;
+    }
+
+    &_item {
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+    }
+
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+
+    .search {
+      display: flex;
+      max-width: 300px;
+    }
+  }
+}
+
+@media screen and (min-width: 985px) {
+  .container {
+    max-width: 985px;
+  }
+
+  .wrap {
+    max-width: initial;
+    min-width: 985px;
+  }
+
+  .list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+
